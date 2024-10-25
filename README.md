@@ -1,4 +1,4 @@
-# Chrome Extension TypeScript Starter
+# Css Recipe for design and frontend
 
 ![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
 

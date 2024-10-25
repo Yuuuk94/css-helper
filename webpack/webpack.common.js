@@ -4,6 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 const srcDir = path.join(__dirname, "..", "src");
 
 module.exports = {
+  devtool: "source-map",
   entry: {
     popup: path.join(srcDir, "popup/index.tsx"),
     options: path.join(srcDir, "options/index.tsx"),
@@ -29,10 +30,24 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
     ],
   },
   resolve: {
-    extensions: [".ts", ".tsx", ".js"],
+    alias: {
+      popup: path.resolve(srcDir, "popup"),
+      options: path.resolve(srcDir, "options"),
+      background: path.resolve(srcDir, "background"),
+      contentScript: path.resolve(srcDir, "content_script"),
+      assets: path.resolve(srcDir, "assets"),
+      components: path.resolve(srcDir, "components"),
+      styles: path.resolve(srcDir, "styles"),
+      types: path.resolve(srcDir, "types"),
+    },
+    extensions: [".ts", ".tsx", ".js", ".svg"],
   },
   plugins: [
     new CopyPlugin({

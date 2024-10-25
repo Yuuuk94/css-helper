@@ -1,0 +1,130 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "import"],
+  "rules": {
+    "semi": [
+      "off",
+      "never",
+      {
+        "omitLastInOneLineBlock": true
+      }
+    ],
+    "radix": [0],
+    "import/order": [
+      "warn",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "index",
+          "sibling",
+          "unknown",
+          "object"
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react",
+          "react-dom",
+          "styled-components",
+          "antd",
+          "zustand",
+          "react-query",
+          "react-router"
+        ],
+        "pathGroups": [
+          {
+            "pattern": "{react*,react*/**}",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "{styled-components,zustand,zustand/**,antd}",
+            "group": "builtin",
+            "position": "before"
+          },
+          {
+            "pattern": "{**/components,**/hooks,**/pages}",
+            "group": "internal",
+            "position": "before"
+          },
+          { "pattern": "**/assets", "group": "object", "position": "after" }
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "import/no-unresolved": [0, { "commonjs": true, "amd": true }],
+    "import/named": 0,
+    "import/namespace": 0,
+    "import/default": 0,
+    "import/export": 0,
+    "global-require": [0],
+    "react/no-array-index-key": [0],
+    "no-nested-ternary": [0],
+    "arrow-body-style": [0],
+    "class-methods-use-this": [0, { "exceptMethods": [] }],
+    "default-case": [1],
+    "jsx-a11y/media-has-caption": [0],
+    "jsx-a11y/label-has-associated-control": [0],
+    "jsx-a11y/label-has-for": [0],
+    "jsx-quotes": [0],
+    "jsx-a11y/anchor-is-valid": [0],
+    "jsx-a11y/no-noninteractive-element-interactions": [0],
+    "jsx-a11y/click-events-have-key-events": [0],
+    "jsx-a11y/no-static-element-interactions": [0],
+    "consistent-return": [0],
+    "react/button-has-type": [0],
+    "max-len": [0],
+    "no-alert": [0],
+    "no-console": [0],
+    "no-plusplus": [0],
+    "no-shadow": [1],
+    "no-underscore-dangle": [0],
+    "no-fallthrough": [0],
+    "no-undef": [0],
+    "no-unused-vars": [0],
+    "prefer-destructuring": [0],
+    "prefer-template": [0],
+    "quote-props": [0],
+    "no-named-as-default": [0],
+    "import/no-named-as-default-member": [0],
+    "import/no-named-as-default": [0],
+    "import/no-cycle": [1],
+    "import/no-dynamic-require": [0],
+    "react/destructuring-assignment": [0],
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-one-expression-per-line": [0],
+    "react/no-unescaped-entities": [0],
+    "react/prefer-stateless-function": [0],
+    "react/prop-types": [0], // temp,
+    "linebreak-style": [0],
+    "arrow-parens": "off",
+    "jsx-a11y/anchor-has-content": [0],
+    "react/require-default-props": [0],
+    "react/jsx-wrap-multilines": [0],
+    "react-hooks/exhaustive-deps": [0],
+    "prefer-const": [0],
+    "no-dupe-keys": [0],
+    "no-unsafe-optional-chaining": [0],
+    "no-extra-boolean-cast": 0
+  }
+}
