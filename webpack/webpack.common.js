@@ -10,6 +10,7 @@ module.exports = {
     options: path.join(srcDir, "options/index.tsx"),
     background: path.join(srcDir, "background/index.ts"),
     content_script: path.join(srcDir, "content_script/index.tsx"),
+    scripts: path.join(srcDir, "scripts/index.ts"),
   },
   output: {
     path: path.join(__dirname, "../dist/js"),
@@ -41,7 +42,7 @@ module.exports = {
       popup: path.resolve(srcDir, "popup"),
       options: path.resolve(srcDir, "options"),
       background: path.resolve(srcDir, "background"),
-      contentScript: path.resolve(srcDir, "content_script"),
+      content_script: path.resolve(srcDir, "content_script"),
       assets: path.resolve(srcDir, "assets"),
       components: path.resolve(srcDir, "components"),
       styles: path.resolve(srcDir, "styles"),

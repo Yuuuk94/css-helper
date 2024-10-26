@@ -1,35 +1,64 @@
-import React, { useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import React, { useMemo, useState } from 'react';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import IconClose from 'assets/icon-close.svg';
+import IconBack from 'assets/icon-arrow_back.svg';
 
-import { AppTitle, AppMenuList } from '../constans';
-
+import { AppTitle, AppMenuList, ROUTE_PATH } from '../constans';
 
 const Layout = () => {
+  const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  const isDetail = pathname === ROUTE_PATH.SETTINGS;
+
+  const currentPage = useMemo(() => {
+    return AppMenuList.find((menu) => menu.path === pathname);
+  }, [pathname]);
+
   const onClickMenu = (path: string) => {
     navigate(path);
   };
+
+  const onClickBack = () => {
+    // FIXME
+    navigate('/');
+  };
+
+  const onClickClose = () => {
+    window.close();
+  };
+
   return (
     <Style.Wrap>
       <Style.Header>
-        <Style.AppTitle>{AppTitle}</Style.AppTitle>
-        <IconClose />
+        {isDetail && (
+          <Style.AppCloseBtn onClick={onClickBack}>
+            <IconBack />
+          </Style.AppCloseBtn>
+        )}
+        <Style.AppTitle>
+          {isDetail ? currentPage?.label || '' : AppTitle}
+        </Style.AppTitle>
+        <Style.AppCloseBtn onClick={onClickClose}>
+          <IconClose />
+        </Style.AppCloseBtn>
       </Style.Header>
-      <Style.AppMenuWrap>
-        {AppMenuList.map((menu, idx) => (
-          <Style.MenuItem
-            key={`app-menu-` + idx}
-            onClick={() => onClickMenu(menu.path)}
-          >
-            {menu.label}
-          </Style.MenuItem>
-        ))}
-      </Style.AppMenuWrap>
+      {!isDetail && (
+        <Style.AppMenuWrap>
+          {AppMenuList.map((menu, idx) => (
+            <Style.MenuItem
+              key={`app-menu-` + idx}
+              onClick={() => onClickMenu(menu.path)}
+            >
+              {menu.label}
+            </Style.MenuItem>
+          ))}
+        </Style.AppMenuWrap>
+      )}
       <Style.ContentsContainer>
-      <Outlet />
+        <Outlet />
       </Style.ContentsContainer>
     </Style.Wrap>
   );
@@ -80,7 +109,7 @@ const Style = {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select:none;
+    user-select: none;
     &::before {
       content: '';
       width: 100%;
@@ -110,6 +139,9 @@ const Style = {
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.text['900']};
   `,
+  AppCloseBtn: styled.button`
+    cursor: pointer;
+  `,
   AppMenuWrap: styled.nav`
     width: 100%;
     padding: 4px 16px;
@@ -132,7 +164,7 @@ const Style = {
     }
   `,
   MenuItem: styled.li`
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
     color: ${({ theme }) => theme.colors.text['900']};
@@ -140,14 +172,12 @@ const Style = {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select:none; 
+    user-select: none;
   `,
   ContentsContainer: styled.div`
     width: 100%;
     height: 100%;
-    min-height: 518px;
     padding: 0 12px 8px;
-    position: relative;
 
     &::after {
       content: '';
@@ -156,9 +186,9 @@ const Style = {
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 0;
+      bottom: 8px;
       z-index: 100;
       border: 1px solid ${({ theme }) => theme.colors.text['700']};
     }
-  `
+  `,
 };

@@ -40,13 +40,13 @@ const GlobalStyle = createGlobalStyle`
     }
 
     ul, li {
-    list-style: none;
+        list-style: none;
     }
 
-    button,
-    input,
-    select {
-    margin: 0;
+    button {
+        border: none;
+        border-radius: 0;
+        background: none;
     }
 
     html {
@@ -57,35 +57,32 @@ const GlobalStyle = createGlobalStyle`
     *::before,
     *::after {
         box-sizing: border-box;
-
         word-break: keep-all;
-    -webkit-tap-highlight-color: transparent;
+        -webkit-tap-highlight-color: transparent;
+        margin: 0;
+        padding: 0;
     }
 
     img {
-    vertical-align: middle;
-    border-style: none;
+        vertical-align: middle;
+        border-style: none;
     }
 
     iframe {
-    border: 0;
+        border: 0;
     }
 
     table {
-    border-collapse: collapse;
-    border-spacing: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
     }
 
-    td,
-    th {
-    padding: 0;
+    td, th {
+        padding: 0;
     }
 
     a {
-    text-decoration: none;
-    }
-
-    *, *::before, *::after {
+        text-decoration: none;
     }
 
     body {
