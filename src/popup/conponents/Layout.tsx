@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo } from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
 import IconClose from 'assets/icon-close.svg';
 import IconBack from 'assets/icon-arrow_back.svg';
+import Btn from 'components/Button';
 
 import { AppTitle, AppMenuList, ROUTE_PATH } from '../constans';
 
@@ -34,16 +35,16 @@ const Layout = () => {
     <Style.Wrap>
       <Style.Header>
         {isDetail && (
-          <Style.AppCloseBtn onClick={onClickBack}>
+          <Btn.LageIconBtn onClick={onClickBack}>
             <IconBack />
-          </Style.AppCloseBtn>
+          </Btn.LageIconBtn>
         )}
         <Style.AppTitle>
           {isDetail ? currentPage?.label || '' : AppTitle}
         </Style.AppTitle>
-        <Style.AppCloseBtn onClick={onClickClose}>
+        <Btn.LageIconBtn onClick={onClickClose}>
           <IconClose />
-        </Style.AppCloseBtn>
+        </Btn.LageIconBtn>
       </Style.Header>
       {!isDetail && (
         <Style.AppMenuWrap>
@@ -57,7 +58,7 @@ const Layout = () => {
           ))}
         </Style.AppMenuWrap>
       )}
-      <Style.ContentsContainer>
+      <Style.ContentsContainer $isDetail={isDetail}>
         <Outlet />
       </Style.ContentsContainer>
     </Style.Wrap>
@@ -73,30 +74,28 @@ const Style = {
     min-width: 320px;
     height: 100%;
     min-height: 600px;
-    max-width: 600px;
-    position: relative;
 
     &::before {
       content: '';
       width: 1px;
       height: 100%;
-      position: absolute;
+      position: fixed;
       top: 0;
-      left: 12px;
+      left: calc(12px - 1px);
       bottom: 0;
       z-index: 100;
-      border: 1px solid ${({ theme }) => theme.colors.text['700']};
+      border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
     &::after {
       content: '';
       width: 1px;
       height: 100%;
-      position: absolute;
+      position: fixed;
       top: 0;
-      right: 12px;
+      right: calc(12px - 1px);
       bottom: 0;
       z-index: 100;
-      border: 1px solid ${({ theme }) => theme.colors.text['700']};
+      border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
   `,
   Header: styled.header`
@@ -106,10 +105,18 @@ const Style = {
     justify-content: space-between;
     align-items: center;
     position: relative;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
     &::before {
       content: '';
       width: 100%;
@@ -119,7 +126,7 @@ const Style = {
       left: 0;
       right: 0;
       z-index: 100;
-      border: 1px solid ${({ theme }) => theme.colors.text['700']};
+      border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
     &::after {
       content: '';
@@ -130,17 +137,14 @@ const Style = {
       right: 0;
       bottom: 0;
       z-index: 100;
-      border: 1px solid ${({ theme }) => theme.colors.text['700']};
+      border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
   `,
   AppTitle: styled.h1`
     font-size: 20px;
     font-weight: 800;
     text-transform: uppercase;
-    color: ${({ theme }) => theme.colors.text['900']};
-  `,
-  AppCloseBtn: styled.button`
-    cursor: pointer;
+    color: ${({ theme }) => theme.colors.text[900]};
   `,
   AppMenuWrap: styled.nav`
     width: 100%;
@@ -151,6 +155,12 @@ const Style = {
     gap: 8px;
     position: relative;
 
+    position: fixed;
+    top: 48px;
+    left: 0;
+    right: 0;
+    background-color: white;
+
     &::after {
       content: '';
       width: 100%;
@@ -160,35 +170,33 @@ const Style = {
       right: 0;
       bottom: 0;
       z-index: 100;
-      border: 1px solid ${({ theme }) => theme.colors.text['700']};
+      border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
   `,
   MenuItem: styled.li`
     font-size: 16px;
     font-weight: 600;
     text-transform: capitalize;
-    color: ${({ theme }) => theme.colors.text['900']};
+    color: ${({ theme }) => theme.colors.text[900]};
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
   `,
-  ContentsContainer: styled.div`
+  ContentsContainer: styled.div<{ $isDetail: boolean }>`
     width: 100%;
-    height: 100%;
-    padding: 0 12px 8px;
-
+    padding: ${({ $isDetail }) => ($isDetail ? '48px' : '75px')} 12px 8px;
     &::after {
       content: '';
       width: 100%;
       height: 1px;
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
       bottom: 8px;
       z-index: 100;
-      border: 1px solid ${({ theme }) => theme.colors.text['700']};
+      border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
   `,
 };

@@ -1,5 +1,5 @@
-console.log("hihi");
+console.log('hihi');
 
-const body = document.getElementsByTagName("body");
+const body = document.getElementsByTagName('body');
 
 console.log(body);

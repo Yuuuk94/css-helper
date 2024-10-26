@@ -86,8 +86,12 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: Roboto, -apple-system, 'Apple SD Gothic', 'Apple Color Emoji', sans-serif;
+        font-family: "Roboto", -apple-system, 'Apple SD Gothic', 'Apple Color Emoji', sans-serif;
         font-size: 14px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
     }
 `;
 
