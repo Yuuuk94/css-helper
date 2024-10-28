@@ -1,7 +1,7 @@
 {
   "name": "css-recipe",
   "version": "1.0.0",
-  "description": "Css Recipe for design and frontend",
+  "description": "Css Recipe for Design and Frontend",
   "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
@@ -37,5 +37,6 @@
     "webpack": "^5.94.0",
     "webpack-cli": "^4.0.0",
     "webpack-merge": "^5.0.0"
-  }
+  },
+  "packageManager": "pnpm@8.15.7+sha256.50783dd0fa303852de2dd1557cd4b9f07cb5b018154a6e76d0f40635d6cee019"
 }

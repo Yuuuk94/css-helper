@@ -1,4 +1,4 @@
-# Css Recipe for design and frontend
+# Css Recipe for Design and Frontend
 
 ![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
 

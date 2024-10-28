@@ -2,35 +2,35 @@
   "manifest_version": 3,
 
   "short_name": "css recipe",
-  "name": "Css Recipe for design and frontend",
-  "description": "Css Recipe for design & frontend",
+  "name": "Css Recipe for Design and Frontend",
+  "description": "Css Recipe for Design and Frontend",
   "version": "1.0.0",
+
+  "permissions": ["storage", "scripting", "activeTab"],
+
+  "host_permissions": ["<all_urls>"],
+
+  "content_scripts": [
+    {
+      "js": ["js/content_script.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["js/*.js", "index.html"],
+      "matches": ["<all_urls>"]
+    }
+  ],
 
   "options_ui": {
     "page": "options.html"
   },
 
-  "action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "run_at":"document_end",
-      "js": ["js/content_script.js", "js/vendor.js"]
-    }
-  ],
+  "action": {},
 
   "background": {
     "service_worker": "js/background.js"
-  },
-
-  "permissions": ["storage", "scripting", "activeTab"],
-  "host_permissions": ["<all_urls>"],
-  "web_accessible_resources": [{
-      "resources": ["js/*.js", "popup.html"], 
-      "matches": ["<all_urls>"]
-  }]
+  }
 }

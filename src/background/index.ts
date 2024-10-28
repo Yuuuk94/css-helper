@@ -1,12 +1,15 @@
-console.log('work');
+console.log('background work');
 
-function injectScript(src: string) {
-  const s = document.createElement('script');
-  s.src = chrome.runtime.getURL(src);
-  s.onload = () => s.remove();
-  (document.head || document.documentElement).append(s);
-}
+chrome.action.onClicked.addListener(function (tab) {
+  console.log('hello');
+});
 
-// chrome.browserAction.onClicked.addListener(function (tab) {
-//   injectScript("js/scripts.js");
+// chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+//   chrome.tabs.sendMessage(
+//     tabs[0].id as number,
+//     { greeting: 'hello' },
+//     function (response) {
+//       console.log(response);
+//     }
+//   );
 // });
