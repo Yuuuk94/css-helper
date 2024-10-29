@@ -1,4 +1,6 @@
-export const getDefaultData = () => {
+import { DefaultData } from 'types/defaultData';
+
+export const getDefaultData: () => DefaultData = () => {
   const all = document.querySelectorAll('*');
   const colors: Set<string> = new Set();
   const assets = {};
@@ -38,7 +40,7 @@ const getAssets = (assets: Record<string, string>, target: Element) => {
         target.getAttribute('href')
       ) {
         imageUrl = getFullUrl(target.getAttribute('href') as string);
-        value = 'icon';
+        value = 'app icon';
       }
       break;
     case 'META':
@@ -53,13 +55,13 @@ const getAssets = (assets: Record<string, string>, target: Element) => {
     case 'IMG':
       if (target.getAttribute('src')) {
         imageUrl = getFullUrl(target.getAttribute('src') as string);
-        value = target.getAttribute('alt') || 'image';
+        value = 'image/ ' + (target.getAttribute('alt') || '');
       }
       break;
     case 'VIDEO':
       if (target.getAttribute('src')) {
         imageUrl = getFullUrl(target.getAttribute('src') as string);
-        value = target.getAttribute('alt') || 'video';
+        value = 'video/ ' + (target.getAttribute('alt') || '');
       }
       break;
     default:

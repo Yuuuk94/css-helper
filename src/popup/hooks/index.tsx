@@ -5,38 +5,35 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { MessageProps } from 'types/message';
-import { IFRAME_MESSAGE } from 'popup/utils';
+import { DefaultData } from 'types/defaultData';
 
-interface Context {
-  colors: string[];
+interface Context extends DefaultData {
+  bodyStyle: any;
 }
+
+let defaultDataTag = document.getElementById('default-data-app') as HTMLElement;
+const defaultData: DefaultData = JSON.parse(defaultDataTag.innerText as string);
 
 const context = createContext<Context | null>(null);
 
 export const DefaultDataContext = ({ children }: PropsWithChildren) => {
   const [colors, setColors] = useState<string[]>([]);
-  useEffect(() => {
-    const eventListener = (e: MessageEvent<string>) => {
-      const messageData: MessageProps = JSON.parse(e.data);
-      if (messageData.id === IFRAME_MESSAGE.SEND_COLORS) {
-        setColors(messageData.contents as string[]);
-      }
-      if (messageData.id === IFRAME_MESSAGE.SEND_ASSETS) {
-        console.log(messageData.contents);
-      }
-      if (messageData.id === IFRAME_MESSAGE.SEND_BODY_STYLES) {
-        console.log(messageData.contents);
-      }
-    };
-    window.addEventListener('message', eventListener);
+  const [assets, setAssets] = useState<Record<string, string>>({});
+  const [bodyStyle, setBodyStyle] = useState({});
 
-    return () => {
-      window.removeEventListener('message', eventListener);
-    };
+  useEffect(() => {
+    if (defaultData) {
+      setColors(defaultData.colors || []);
+      setAssets(defaultData.assets || {});
+      setBodyStyle(defaultData.bodyStyle || {});
+    }
   }, []);
 
-  return <context.Provider value={{ colors }}>{children}</context.Provider>;
+  return (
+    <context.Provider value={{ colors, assets, bodyStyle }}>
+      {children}
+    </context.Provider>
+  );
 };
 
 export const useDataContext = () => useContext(context) as Context;

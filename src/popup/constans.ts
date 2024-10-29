@@ -1,35 +1,35 @@
 export const ROUTE_PATH = {
-  HOME: "/",
-  COLORS: "/colors",
-  SETTINGS: "/settings",
-  STYLES: "/styles",
-  ASSETS: "/assets",
-  WIREFRAME: "/wireframe",
+  HOME: '/',
+  COLORS: '/colors',
+  SETTINGS: '/settings',
+  STYLES: '/styles',
+  ASSETS: '/assets',
+  WIREFRAME: '/wireframe',
 } as const;
 
-export const AppTitle = "css recipe";
+export const AppTitle = 'css recipe';
 
 export const AppMenuList = [
   {
-    label: "colors",
+    label: 'colors',
     path: ROUTE_PATH.COLORS,
   },
   {
-    label: "settings",
-    path: ROUTE_PATH.SETTINGS,
+    label: 'styles',
+    path: ROUTE_PATH.STYLES,
   },
-  //   {
-  //     label: 'styles',
-  //     path: ROUTE_PATH.STYLES,
-  //   },
-  //   {
-  //     label: 'assets',
-  //     path: ROUTE_PATH.ASSETS,
-  //   },
+  {
+    label: 'assets',
+    path: ROUTE_PATH.ASSETS,
+  },
   //   {
   //     label: 'wireframe',
   //     path: ROUTE_PATH.WIREFRAME,
   //   },
+  {
+    label: 'settings',
+    path: ROUTE_PATH.SETTINGS,
+  },
 ] as const;
 
 export const defaultAppSetting = {

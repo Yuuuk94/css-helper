@@ -14,7 +14,6 @@ const ColorsPage = () => {
 
   return (
     <Style.Wrap>
-      {!colors.length && 'Loading...'}
       {colors.map((color, idx) => {
         const isDark = true;
         return (
