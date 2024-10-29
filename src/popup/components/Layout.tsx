@@ -76,6 +76,7 @@ const Style = {
     min-height: 600px;
     max-height: 600px;
     background-color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: relative;
 
     &::before {

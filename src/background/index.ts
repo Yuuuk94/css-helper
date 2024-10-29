@@ -1,11 +1,19 @@
 console.log('background work');
 
-chrome.action.onClicked.addListener((tab: chrome.tabs.Tab) => {
-  if (tab.id) {
-    // 현재 활성 탭에서 content script 실행
+/* global chrome */
+chrome.action.onClicked.addListener(async () => {
+  const [activeTab] = await chrome.tabs.query({
+    active: true,
+    currentWindow: true,
+  });
+  if (activeTab.id) {
     chrome.scripting.executeScript({
-      target: { tabId: tab.id },
-      files: ['js/scripts.js', 'js/popup.js', 'js/vendor.js'],
+      target: { tabId: activeTab.id },
+      files: ['js/scripts.js'],
     });
+    // chrome.scripting.insertCSS({
+    //   target: { tabId: activeTab.id },
+    //   files: ['styles/page.css'],
+    // });
   }
 });
