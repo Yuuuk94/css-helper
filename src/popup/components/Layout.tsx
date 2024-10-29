@@ -7,8 +7,7 @@ import IconBack from 'assets/icon-arrow_back.svg';
 import Btn from 'popup/components/Button';
 
 import { AppTitle, AppMenuList, ROUTE_PATH } from '../constans';
-import { sendMessageToApp } from 'popup/utils';
-import { IFRAME_MESSAGE } from 'types/message';
+import { IFRAME_MESSAGE, sendMessageToApp } from 'popup/utils';
 
 const Layout = () => {
   const { pathname } = useLocation();

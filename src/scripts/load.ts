@@ -14,7 +14,6 @@ export const onLoadApp = () => {
       'position:fixed;top:12px;right:12px;display:block;z-index:5000;';
 
     const iframe = document.createElement('iframe');
-    iframe.id = popupIframeId;
     iframe.style.cssText =
       commonStyle +
       'border:none;box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);';
@@ -37,11 +36,6 @@ export const onLoadApp = () => {
         reactScript.src = extensionOrigin + '/js/popup.js';
         reactScript.async = true;
         iframeDoc.head.appendChild(reactScript);
-
-        // const reactDomScript = iframeDoc.createElement('script');
-        // reactDomScript.src = extensionOrigin + '/js/vendor.js';
-        // reactDomScript.async = true;
-        // iframeDoc.head.appendChild(reactDomScript);
       }
     };
 

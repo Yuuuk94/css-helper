@@ -1,8 +1,16 @@
 import { hasApp, onLoadApp } from './load';
 import { closeApp } from './closeApp';
-import { IFRAME_MESSAGE, MessageProps } from 'types/message';
+import { MessageProps } from 'types/message';
+import { IFRAME_MESSAGE } from './constans';
 
-console.log('css resipe start');
+console.log(`
+ ____  ____  ____    ____  _____ ____  _  ____  _____   ____  _____  ____  ____  _____ 
+/   _\/ ___\/ ___\  /  __\/  __//   _\/ \/  __\/  __/  / ___\/__ __\/  _ \/  __\/__ __\
+|  /  |    \|    \  |  \/||  \  |  /  | ||  \/||  \    |    \  / \  | / \||  \/|  / \  
+|  \__\___ |\___ |  |    /|  /_ |  \__| ||  __/|  /_   \___ |  | |  | |-|||    /  | |  
+\____/\____/\____/  \_/\_\\____\\____/\_/\_/   \____\  \____/  \_/  \_/ \|\_/\_\  \_/  
+                                                                                       
+`);
 console.log('withmay');
 
 if (hasApp()) {
