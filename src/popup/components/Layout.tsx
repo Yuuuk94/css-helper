@@ -7,6 +7,8 @@ import IconBack from 'assets/icon-arrow_back.svg';
 import Btn from 'popup/components/Button';
 
 import { AppTitle, AppMenuList, ROUTE_PATH } from '../constans';
+import { sendMessageToApp } from 'popup/utils';
+import { IFRAME_MESSAGE } from 'types/message';
 
 const Layout = () => {
   const { pathname } = useLocation();
@@ -27,9 +29,7 @@ const Layout = () => {
     navigate('/');
   };
 
-  const onClickClose = () => {
-    window.close();
-  };
+  const onClickClose = () => sendMessageToApp({ id: IFRAME_MESSAGE.CLOSE_APP });
 
   return (
     <Style.Wrap>
@@ -76,7 +76,6 @@ const Style = {
     min-height: 600px;
     max-height: 600px;
     background-color: white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     position: relative;
 
     &::before {

@@ -14,14 +14,14 @@ module.exports = {
     path: path.join(__dirname, '../dist/js'),
     filename: '[name].js',
   },
-  optimization: {
-    splitChunks: {
-      name: 'vendor',
-      chunks(chunk) {
-        return chunk.name !== 'background';
-      },
-    },
-  },
+  // optimization: {
+  //   splitChunks: {
+  //     name: 'vendor',
+  //     chunks(chunk) {
+  //       return chunk.name !== 'background' || chunk.name !== 'scripts';
+  //     },
+  //   },
+  // },
   module: {
     rules: [
       {
@@ -43,7 +43,7 @@ module.exports = {
       styles: path.resolve(srcDir, 'styles'),
       types: path.resolve(srcDir, 'types'),
     },
-    extensions: ['.ts', '.tsx', '.js', '.svg'],
+    extensions: ['.d.ts', '.ts', '.tsx', '.js', '.svg'],
   },
   plugins: [
     new CopyPlugin({
