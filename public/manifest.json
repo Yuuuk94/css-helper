@@ -10,23 +10,12 @@
 
   "host_permissions": ["<all_urls>"],
 
-  "content_scripts": [
-    {
-      "js": ["js/content_script.js"],
-      "matches": ["<all_urls>"]
-    }
-  ],
-
   "web_accessible_resources": [
     {
       "resources": ["js/*.js", "index.html"],
       "matches": ["<all_urls>"]
     }
   ],
-
-  "options_ui": {
-    "page": "options.html"
-  },
 
   "action": {},
 

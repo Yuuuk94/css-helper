@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import Layout from '../conponents/Layout';
+import Layout from '../components/Layout';
 import { ROUTE_PATH } from 'popup/constans';
 
 const PopupIndex = () => {

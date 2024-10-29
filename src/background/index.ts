@@ -1,15 +1,11 @@
 console.log('background work');
 
-chrome.action.onClicked.addListener(function (tab) {
-  console.log('hello');
+chrome.action.onClicked.addListener((tab: chrome.tabs.Tab) => {
+  if (tab.id) {
+    // 현재 활성 탭에서 content script 실행
+    chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ['js/scripts.js', 'js/popup.js', 'js/vendor.js'],
+    });
+  }
 });
-
-// chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//   chrome.tabs.sendMessage(
-//     tabs[0].id as number,
-//     { greeting: 'hello' },
-//     function (response) {
-//       console.log(response);
-//     }
-//   );
-// });

@@ -1,26 +1,24 @@
-const webpack = require("webpack");
-const path = require("path");
-const CopyPlugin = require("copy-webpack-plugin");
-const srcDir = path.join(__dirname, "..", "src");
+const webpack = require('webpack');
+const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
+const srcDir = path.join(__dirname, '..', 'src');
 
 module.exports = {
-  devtool: "source-map",
+  devtool: 'source-map',
   entry: {
-    popup: path.join(srcDir, "popup/index.tsx"),
-    options: path.join(srcDir, "options/index.tsx"),
-    background: path.join(srcDir, "background/index.ts"),
-    content_script: path.join(srcDir, "content_script/index.tsx"),
-    scripts: path.join(srcDir, "scripts/index.ts"),
+    popup: path.join(srcDir, 'popup/index.tsx'),
+    background: path.join(srcDir, 'background/index.ts'),
+    scripts: path.join(srcDir, 'scripts/index.ts'),
   },
   output: {
-    path: path.join(__dirname, "../dist/js"),
-    filename: "[name].js",
+    path: path.join(__dirname, '../dist/js'),
+    filename: '[name].js',
   },
   optimization: {
     splitChunks: {
-      name: "vendor",
+      name: 'vendor',
       chunks(chunk) {
-        return chunk.name !== "background";
+        return chunk.name !== 'background';
       },
     },
   },
@@ -28,31 +26,28 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: "ts-loader",
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.svg$/,
-        use: ["@svgr/webpack"],
+        use: ['@svgr/webpack'],
       },
     ],
   },
   resolve: {
     alias: {
-      popup: path.resolve(srcDir, "popup"),
-      options: path.resolve(srcDir, "options"),
-      background: path.resolve(srcDir, "background"),
-      content_script: path.resolve(srcDir, "content_script"),
-      assets: path.resolve(srcDir, "assets"),
-      components: path.resolve(srcDir, "components"),
-      styles: path.resolve(srcDir, "styles"),
-      types: path.resolve(srcDir, "types"),
+      popup: path.resolve(srcDir, 'popup'),
+      background: path.resolve(srcDir, 'background'),
+      assets: path.resolve(srcDir, 'assets'),
+      styles: path.resolve(srcDir, 'styles'),
+      types: path.resolve(srcDir, 'types'),
     },
-    extensions: [".ts", ".tsx", ".js", ".svg"],
+    extensions: ['.ts', '.tsx', '.js', '.svg'],
   },
   plugins: [
     new CopyPlugin({
-      patterns: [{ from: ".", to: "../", context: "public" }],
+      patterns: [{ from: '.', to: '../', context: 'public' }],
       options: {},
     }),
   ],

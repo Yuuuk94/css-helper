@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import IconClose from 'assets/icon-close.svg';
 import IconBack from 'assets/icon-arrow_back.svg';
-import Btn from 'components/Button';
+import Btn from 'popup/components/Button';
 
 import { AppTitle, AppMenuList, ROUTE_PATH } from '../constans';
 
@@ -74,12 +74,15 @@ const Style = {
     min-width: 320px;
     height: 100%;
     min-height: 600px;
+    max-height: 600px;
+    background-color: white;
+    position: relative;
 
     &::before {
       content: '';
       width: 1px;
       height: 100%;
-      position: fixed;
+      position: absolute;
       top: 0;
       left: calc(12px - 1px);
       bottom: 0;
@@ -90,7 +93,7 @@ const Style = {
       content: '';
       width: 1px;
       height: 100%;
-      position: fixed;
+      position: absolute;
       top: 0;
       right: calc(12px - 1px);
       bottom: 0;
@@ -106,7 +109,7 @@ const Style = {
     align-items: center;
     position: relative;
 
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
@@ -155,7 +158,7 @@ const Style = {
     gap: 8px;
     position: relative;
 
-    position: fixed;
+    position: absolute;
     top: 48px;
     left: 0;
     right: 0;
@@ -186,12 +189,14 @@ const Style = {
   `,
   ContentsContainer: styled.div<{ $isDetail: boolean }>`
     width: 100%;
+    height: 100%;
     padding: ${({ $isDetail }) => ($isDetail ? '48px' : '75px')} 12px 8px;
+    overflow: auto;
     &::after {
       content: '';
       width: 100%;
       height: 1px;
-      position: fixed;
+      position: absolute;
       left: 0;
       right: 0;
       bottom: 8px;

@@ -6,9 +6,10 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { popupRouter } from './router';
 
 import styledTheme from 'styles';
-import GlobalStyle from 'components/GlobalStyled';
+import GlobalStyle from 'popup/components/GlobalStyled';
 
-const root = createRoot(document.getElementById('root')!);
+const target = document.getElementById('css-helper-root');
+const root = createRoot(target!);
 
 root.render(
   <React.StrictMode>

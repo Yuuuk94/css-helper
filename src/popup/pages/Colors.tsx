@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 import { colorList } from 'popup/mockData';
 import IconColorize from 'assets/icon-colorize.svg';
-import Btn from 'components/Button';
+import Btn from 'popup/components/Button';
 
 const ColorsPage = () => {
   const onCopyClick = (color: string) => {
