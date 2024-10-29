@@ -1,33 +1,37 @@
-import { hasApp, onLoadApp } from './load';
-import { closeApp } from './closeApp';
-import { MessageProps } from 'types/message';
+import { getDefaultData } from './defaultData';
 import { IFRAME_MESSAGE } from './constans';
+import { closeApp, hasApp, onLoadApp } from './load';
+import { getMessageFromIframe, sendMessageToIframe } from './message';
 
 console.log(`
- ____  ____  ____    ____  _____ ____  _  ____  _____   ____  _____  ____  ____  _____ 
-/   _\/ ___\/ ___\  /  __\/  __//   _\/ \/  __\/  __/  / ___\/__ __\/  _ \/  __\/__ __\
-|  /  |    \|    \  |  \/||  \  |  /  | ||  \/||  \    |    \  / \  | / \||  \/|  / \  
-|  \__\___ |\___ |  |    /|  /_ |  \__| ||  __/|  /_   \___ |  | |  | |-|||    /  | |  
-\____/\____/\____/  \_/\_\\____\\____/\_/\_/   \____\  \____/  \_/  \_/ \|\_/\_\  \_/  
+     ____  ____  ____    ____  _____ ____  _  ____  _____   ____  _____  ____  ____  _____ 
+    /   _\/ ___\/ ___\  /  __\/  __//   _\/ \/  __\/  __/  / ___\/__ __\/  _ \/  __\/__ __\
+    |  /  |    \|    \  |  \/||  \  |  /  | ||  \/||  \    |    \  / \  | / \||  \/|  / \  
+    |  \__\___ |\___ |  |    /|  /_ |  \__| ||  __/|  /_   \___ |  | |  | |-|||    /  | |  
+    \____/\____/\____/  \_/\_\\____\\____/\_/\_/   \____\  \____/  \_/  \_/ \|\_/\_\  \_/  
                                                                                        
 `);
-console.log('withmay');
 
 if (hasApp()) {
   closeApp();
 } else {
   onLoadApp();
+  const { colors, assets, bodyStyle } = getDefaultData();
+  //FIXME: 호출 타이밍 수정 필요
+  setTimeout(() => {
+    sendMessageToIframe({
+      id: IFRAME_MESSAGE.SEND_COLORS,
+      contents: colors,
+    });
+    sendMessageToIframe({
+      id: IFRAME_MESSAGE.SEND_ASSETS,
+      contents: assets,
+    });
+    sendMessageToIframe({
+      id: IFRAME_MESSAGE.SEND_ASSETS,
+      contents: bodyStyle,
+    });
+  }, 100);
 }
 
-window.addEventListener('message', (e) => {
-  console.log(e, 'im here');
-  const messageData: MessageProps = JSON.parse(e.data);
-  switch (messageData.id) {
-    case IFRAME_MESSAGE.CLOSE_APP:
-      closeApp();
-      break;
-
-    default:
-      return;
-  }
-});
+window.addEventListener('message', getMessageFromIframe);

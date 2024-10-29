@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from 'styled-components';
 
-import { colorList } from 'popup/mockData';
 import IconColorize from 'assets/icon-colorize.svg';
 import Btn from 'popup/components/Button';
+import { useDataContext } from 'popup/hooks';
 
 const ColorsPage = () => {
+  const { colors } = useDataContext();
+
   const onCopyClick = (color: string) => {
     alert(color);
   };
+
   return (
     <Style.Wrap>
-      {colorList.map((color, idx) => {
+      {!colors.length && 'Loading...'}
+      {colors.map((color, idx) => {
         const isDark = true;
         return (
-          <Style.ColorItem key={`color-list-` + idx} $color={color}>
+          <Style.ColorItem key={color + `-color-list-` + idx} $color={color}>
             <Style.ColorInfo $isDark={isDark}>{color}</Style.ColorInfo>
             <Btn.RoundIconBtn
               $isDark={isDark}

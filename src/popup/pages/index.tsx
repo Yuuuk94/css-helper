@@ -6,8 +6,8 @@ import { ROUTE_PATH } from 'popup/constans';
 
 const PopupIndex = () => {
   const { pathname } = useLocation();
-
   const navigate = useNavigate();
+
   useEffect(() => {
     if (pathname === ROUTE_PATH.HOME) navigate(ROUTE_PATH.COLORS);
   }, [pathname]);
