@@ -1,4 +1,6 @@
+export type messageIdType = 'close_app' | 'send_clipboard' | 'download_asset';
+
 export interface MessageProps<T = any> {
-  id: string;
+  id: messageIdType;
   contents?: T;
 }

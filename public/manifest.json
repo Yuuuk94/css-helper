@@ -6,7 +6,7 @@
   "description": "Css Recipe for Design and Frontend",
   "version": "1.0.0",
 
-  "permissions": ["storage", "scripting", "activeTab"],
+  "permissions": ["storage", "scripting", "activeTab", "downloads"],
 
   "host_permissions": ["<all_urls>"],
 

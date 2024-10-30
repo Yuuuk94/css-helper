@@ -1,3 +1,5 @@
+import { messageIdType } from 'types/message';
+
 export const ROUTE_PATH = {
   HOME: '/',
   COLORS: '/colors',
@@ -34,4 +36,10 @@ export const AppMenuList = [
 
 export const defaultAppSetting = {
   colorMode: 0, // 0 - hex, 1 - rgb, 2 - rgba
+};
+
+export const IFRAME_MESSAGE: Record<string, messageIdType> = {
+  CLOSE_APP: 'close_app',
+  SEND_CLIPBOARD: 'send_clipboard',
+  DOWNLOAD_ASSET: 'download_asset',
 };

@@ -4,9 +4,19 @@ import IconDownload from 'assets/icon-download.svg';
 
 import { useDataContext } from 'popup/hooks/useDataContext';
 import Btn from 'popup/components/Button';
+import useMessage from 'popup/hooks/useMessage';
+import { IFRAME_MESSAGE } from 'popup/constans';
 
 const AssetsPage = () => {
   const { assets } = useDataContext();
+  const { sendMessageToApp } = useMessage();
+
+  const onDownloadAsset = (asset: string) => {
+    sendMessageToApp({
+      id: IFRAME_MESSAGE.DOWNLOAD_ASSET,
+      contents: { url: asset, name: assets[asset] },
+    });
+  };
 
   return (
     <Style.Wrap>
@@ -15,7 +25,7 @@ const AssetsPage = () => {
           <Style.Thumnail $bgImg={asset} />
           <Style.InfoWrap>
             <Style.Info>{assets[asset]}</Style.Info>
-            <Btn.RoundIconBtn>
+            <Btn.RoundIconBtn $isLight onClick={() => onDownloadAsset(asset)}>
               <IconDownload />
             </Btn.RoundIconBtn>
           </Style.InfoWrap>

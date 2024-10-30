@@ -5,13 +5,16 @@ import IconColorize from 'assets/icon-colorize.svg';
 import Btn from 'popup/components/Button';
 import { useDataContext } from 'popup/hooks/useDataContext';
 import useColors from 'popup/hooks/useColors';
+import useMessage from 'popup/hooks/useMessage';
+import { IFRAME_MESSAGE } from 'popup/constans';
 
 const ColorsPage = () => {
   const { colors } = useDataContext();
+  const { sendMessageToApp } = useMessage();
   const { isLightColor, colorSort, rgbToHex } = useColors();
 
   const onCopyClick = (color: string) => {
-    alert(color);
+    sendMessageToApp({ id: IFRAME_MESSAGE.SEND_CLIPBOARD, contents: color });
   };
 
   return (
@@ -21,7 +24,14 @@ const ColorsPage = () => {
         const labelColor = rgbToHex(color);
         return (
           <Style.ColorItem key={color + `-color-list-` + idx} $color={color}>
-            <Style.ColorInfo $isLight={isLight}>{color}</Style.ColorInfo>
+            <Style.ColorInfo $isLight={isLight}>
+              {labelColor.hex}
+            </Style.ColorInfo>
+            {labelColor.opacity && (
+              <Style.ColorInfo $isLight={isLight}>
+                opacity: {labelColor.opacity}
+              </Style.ColorInfo>
+            )}
             <Btn.RoundIconBtn
               $isLight={isLight}
               className="fill"
@@ -57,6 +67,7 @@ const Style = {
     align-items: end;
   `,
   ColorInfo: styled.p<{ $isLight: boolean }>`
+    width: 90px;
     font-size: 14px;
     font-weight: 500;
     color: ${({ $isLight, theme }) =>

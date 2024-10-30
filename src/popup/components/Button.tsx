@@ -20,7 +20,7 @@ const Btn = {
 
     &:hover {
       background-color: ${({ $isLight }) =>
-        $isLight ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
+        $isLight ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)'};
     }
     &.fill svg path {
       fill: ${({ $isLight, theme }) =>

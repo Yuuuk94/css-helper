@@ -4,10 +4,14 @@ import { styled } from 'styled-components';
 import IconCopy from 'assets/icon-content_copy.svg';
 import Btn from 'popup/components/Button';
 import { useDataContext } from 'popup/hooks/useDataContext';
+import useMessage from 'popup/hooks/useMessage';
+import { IFRAME_MESSAGE } from 'popup/constans';
 
 const ColorsPage = () => {
   const { pageTitle, headingsFonts, bodyFonts, bodyStyle, assets } =
     useDataContext();
+  const { sendMessageToApp } = useMessage();
+
   const ogUrl = useMemo(() => {
     return Object.keys(assets).reduce((acc, value) => {
       if (assets[value].includes('open graph')) {
@@ -31,6 +35,11 @@ const ColorsPage = () => {
     { title: 'Body Typeface' },
     { title: 'Body Styles' },
   ];
+
+  const onCopyClick = (content: string) => {
+    sendMessageToApp({ id: IFRAME_MESSAGE.SEND_CLIPBOARD, contents: content });
+  };
+
   return (
     <Style.Wrap>
       {ogUrl && <Style.Thumnail $bgImg={ogUrl} />}
@@ -42,7 +51,11 @@ const ColorsPage = () => {
               <Style.Section key={'main-style-section-' + idx}>
                 <Style.SectionTitleWrap>
                   <Style.SectionTitle>{section.title}</Style.SectionTitle>
-                  <Btn.RoundIconBtn $isSmall>
+                  <Btn.RoundIconBtn
+                    $isLight
+                    $isSmall
+                    onClick={() => onCopyClick(section.content)}
+                  >
                     <IconCopy />
                   </Btn.RoundIconBtn>
                 </Style.SectionTitleWrap>

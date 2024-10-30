@@ -17,3 +17,10 @@ chrome.action.onClicked.addListener(async () => {
     // });
   }
 });
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message?.type === 'download_img')
+    chrome.downloads.download({
+      url: message?.url,
+      filename: 'image.png',
+    });
+});

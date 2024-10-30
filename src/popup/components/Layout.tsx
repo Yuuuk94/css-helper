@@ -6,12 +6,13 @@ import IconClose from 'assets/icon-close.svg';
 import IconBack from 'assets/icon-arrow_back.svg';
 import Btn from 'popup/components/Button';
 
-import { AppTitle, AppMenuList, ROUTE_PATH } from '../constans';
-import { IFRAME_MESSAGE, sendMessageToApp } from 'popup/utils';
+import { AppTitle, AppMenuList, ROUTE_PATH, IFRAME_MESSAGE } from '../constans';
+import useMessage from 'popup/hooks/useMessage';
 
 const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { sendMessageToApp } = useMessage();
 
   const isDetail = pathname === ROUTE_PATH.SETTINGS;
 
