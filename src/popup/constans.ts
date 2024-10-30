@@ -11,25 +11,25 @@ export const AppTitle = 'css recipe';
 
 export const AppMenuList = [
   {
-    label: 'colors',
-    path: ROUTE_PATH.COLORS,
-  },
-  {
     label: 'styles',
     path: ROUTE_PATH.STYLES,
+  },
+  {
+    label: 'colors',
+    path: ROUTE_PATH.COLORS,
   },
   {
     label: 'assets',
     path: ROUTE_PATH.ASSETS,
   },
-  //   {
-  //     label: 'wireframe',
-  //     path: ROUTE_PATH.WIREFRAME,
-  //   },
   {
     label: 'settings',
     path: ROUTE_PATH.SETTINGS,
   },
+  //   {
+  //     label: 'wireframe',
+  //     path: ROUTE_PATH.WIREFRAME,
+  //   },
 ] as const;
 
 export const defaultAppSetting = {

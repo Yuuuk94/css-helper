@@ -9,7 +9,7 @@ const PopupIndex = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (pathname === ROUTE_PATH.HOME) navigate(ROUTE_PATH.COLORS);
+    if (pathname === ROUTE_PATH.HOME) navigate(ROUTE_PATH.STYLES);
   }, [pathname]);
 
   return <Layout />;

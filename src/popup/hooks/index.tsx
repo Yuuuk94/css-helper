@@ -17,12 +17,18 @@ const defaultData: DefaultData = JSON.parse(defaultDataTag.innerText as string);
 const context = createContext<Context | null>(null);
 
 export const DefaultDataContext = ({ children }: PropsWithChildren) => {
+  const [pageTitle, setPageTitle] = useState<string>('');
+  const [headingsFonts, setHeadingsFonts] = useState<string[]>([]);
+  const [bodyFonts, setBodyFonts] = useState<string[]>([]);
   const [colors, setColors] = useState<string[]>([]);
   const [assets, setAssets] = useState<Record<string, string>>({});
   const [bodyStyle, setBodyStyle] = useState({});
 
   useEffect(() => {
     if (defaultData) {
+      setPageTitle(defaultData.pageTitle);
+      setHeadingsFonts(defaultData.headingsFonts || []);
+      setBodyFonts(defaultData.bodyFonts || []);
       setColors(defaultData.colors || []);
       setAssets(defaultData.assets || {});
       setBodyStyle(defaultData.bodyStyle || {});
@@ -30,7 +36,9 @@ export const DefaultDataContext = ({ children }: PropsWithChildren) => {
   }, []);
 
   return (
-    <context.Provider value={{ colors, assets, bodyStyle }}>
+    <context.Provider
+      value={{ pageTitle, headingsFonts, bodyFonts, colors, assets, bodyStyle }}
+    >
       {children}
     </context.Provider>
   );

@@ -15,12 +15,12 @@ export const popupRouter = createMemoryRouter(
       element: <PopupIndex />,
       children: [
         {
-          path: ROUTE_PATH.COLORS.replace('/', ''),
-          element: <ColorsPage />,
-        },
-        {
           path: ROUTE_PATH.STYLES.replace('/', ''),
           element: <Styles />,
+        },
+        {
+          path: ROUTE_PATH.COLORS.replace('/', ''),
+          element: <ColorsPage />,
         },
         {
           path: ROUTE_PATH.ASSETS.replace('/', ''),

@@ -1,15 +1,16 @@
 import { styled } from 'styled-components';
 
 const Btn = {
-  LageIconBtn: styled.button`
+  IconBtn: styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
   `,
-  RoundIconBtn: styled.button<{ $isDark?: boolean }>`
-    width: 24px;
-    height: 24px;
+  RoundIconBtn: styled.button<{ $isLight?: boolean; $isSmall?: boolean }>`
+    width: ${({ $isSmall }) => ($isSmall ? '16px' : '24px')} !important;
+    min-width: ${({ $isSmall }) => ($isSmall ? '16px' : '24px')} !important;
+    height: ${({ $isSmall }) => ($isSmall ? '16px' : '24px')} !important;
     border-radius: 100%;
 
     display: flex;
@@ -18,12 +19,12 @@ const Btn = {
     cursor: pointer;
 
     &:hover {
-      background-color: ${({ $isDark }) =>
-        $isDark ? 'rgba(0, 0, 0, 0.2)' : 'rgba(255, 255, 255, 0.2)'};
+      background-color: ${({ $isLight }) =>
+        $isLight ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
     }
     &.fill svg path {
-      fill: ${({ $isDark, theme }) =>
-        $isDark ? theme.colors.text[50] : theme.colors.text[900]};
+      fill: ${({ $isLight, theme }) =>
+        $isLight ? theme.colors.text[900] : theme.colors.text[50]};
     }
   `,
 };

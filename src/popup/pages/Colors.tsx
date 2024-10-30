@@ -14,13 +14,13 @@ const ColorsPage = () => {
 
   return (
     <Style.Wrap>
-      {colors.map((color, idx) => {
-        const isDark = true;
+      {colors.sort().map((color, idx) => {
+        const isLight = false;
         return (
           <Style.ColorItem key={color + `-color-list-` + idx} $color={color}>
-            <Style.ColorInfo $isDark={isDark}>{color}</Style.ColorInfo>
+            <Style.ColorInfo $isLight={isLight}>{color}</Style.ColorInfo>
             <Btn.RoundIconBtn
-              $isDark={isDark}
+              $isLight={isLight}
               className="fill"
               onClick={() => onCopyClick(color)}
             >
@@ -53,10 +53,10 @@ const Style = {
     justify-content: space-between;
     align-items: end;
   `,
-  ColorInfo: styled.p<{ $isDark: boolean }>`
+  ColorInfo: styled.p<{ $isLight: boolean }>`
     font-size: 14px;
     font-weight: 500;
-    color: ${({ $isDark, theme }) =>
-      $isDark ? theme.colors.text[50] : theme.colors.text[900]};
+    color: ${({ $isLight, theme }) =>
+      $isLight ? theme.colors.text[900] : theme.colors.text[50]};
   `,
 };

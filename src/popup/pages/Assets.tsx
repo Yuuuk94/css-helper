@@ -14,8 +14,8 @@ const AssetsPage = () => {
         <Style.AssetsItem key={asset + '-assets-list-' + idx}>
           <Style.Thumnail $bgImg={asset} />
           <Style.InfoWrap>
-            {assets[asset]}
-            <Btn.RoundIconBtn $isDark>
+            <Style.Info>{assets[asset]}</Style.Info>
+            <Btn.RoundIconBtn>
               <IconDownload />
             </Btn.RoundIconBtn>
           </Style.InfoWrap>
@@ -62,12 +62,18 @@ const Style = {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-
+    gap: 4px;
+  `,
+  Info: styled.p`
     font-size: 12px;
     font-weight: 600;
     color: ${({ theme }) => theme.colors.text[700]};
     white-space: pre-wrap;
     word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
   `,
 };

@@ -34,16 +34,16 @@ const Layout = () => {
     <Style.Wrap>
       <Style.Header>
         {isDetail && (
-          <Btn.LageIconBtn onClick={onClickBack}>
+          <Btn.IconBtn onClick={onClickBack}>
             <IconBack />
-          </Btn.LageIconBtn>
+          </Btn.IconBtn>
         )}
         <Style.AppTitle>
           {isDetail ? currentPage?.label || '' : AppTitle}
         </Style.AppTitle>
-        <Btn.LageIconBtn onClick={onClickClose}>
+        <Btn.IconBtn onClick={onClickClose}>
           <IconClose />
-        </Btn.LageIconBtn>
+        </Btn.IconBtn>
       </Style.Header>
       {!isDetail && (
         <Style.AppMenuWrap>
