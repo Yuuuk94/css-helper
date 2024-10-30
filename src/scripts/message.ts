@@ -41,7 +41,15 @@ async function imgDownload({ url, name }: { url: string; name: string }) {
 }
 
 async function toDataURL(url: string) {
-  const blob = await fetch(url)
+  const newUrl = new URL(url);
+  const blob = await fetch(url, {
+    headers: {
+      Origin: newUrl.origin,
+      'Access-Control-Request-Method': 'GET',
+      'Access-Control-Request-Headers': 'Content-Type',
+      'sec-fetch-dest': 'image',
+    },
+  })
     .then((res) => res.blob())
     .catch((e) => {
       alert('disabled download');
