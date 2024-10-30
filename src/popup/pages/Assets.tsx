@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import IconDownload from 'assets/icon-download.svg';
 
-import { useDataContext } from 'popup/hooks';
+import { useDataContext } from 'popup/hooks/useDataContext';
 import Btn from 'popup/components/Button';
 
 const AssetsPage = () => {

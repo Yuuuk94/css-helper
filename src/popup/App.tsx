@@ -6,7 +6,7 @@ import { popupRouter } from './router';
 
 import styledTheme from 'styles';
 import GlobalStyle from 'popup/components/GlobalStyled';
-import { DefaultDataContext } from './hooks';
+import { DefaultDataContext } from './hooks/useDataContext';
 
 const App = () => {
   return (

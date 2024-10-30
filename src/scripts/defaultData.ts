@@ -59,7 +59,8 @@ export const getDefaultData: () => DefaultData = () => {
 
     // colors 수집
     const colorList = getColors(computedStyle);
-    if (colorList.length > 0) colorList.map((color) => colors.add(color));
+    if (colorList.length > 0)
+      colorList.map((color) => color && colors.add(color));
   }
 
   const arrayHeadingsFonts = Array.from(headingsFonts);

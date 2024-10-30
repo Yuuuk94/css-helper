@@ -2,6 +2,13 @@ export const getPageTitle = (target: Element) => {
   return target.textContent || '';
 };
 
+export const getFontsFamily = (fontFamily?: string) => {
+  const fontList = fontFamily
+    ? fontFamily?.replaceAll(`"`, '')?.replaceAll(`'`, '')?.split(', ')
+    : [];
+  return fontList;
+};
+
 export const getBodyStyle = () => {
   const body = document.querySelector('body');
   const computedStyle = window.getComputedStyle(body as Element);
@@ -10,14 +17,7 @@ export const getBodyStyle = () => {
   return computedStyle;
 };
 
-export const getFontsFamily = (fontFamily?: string) => {
-  const fontList = fontFamily
-    ? fontFamily?.replaceAll(`"`, '')?.replaceAll(`'`, '')?.split(', ')
-    : [];
-  return fontList;
-};
-
-export function displayElementStyles(element: HTMLBodyElement) {
+export function displayElementStyles(element: HTMLElement) {
   const computedStyles = window.getComputedStyle(element);
   const styleSheets = Array.from(document.styleSheets);
 

@@ -3,10 +3,12 @@ import { styled } from 'styled-components';
 
 import IconColorize from 'assets/icon-colorize.svg';
 import Btn from 'popup/components/Button';
-import { useDataContext } from 'popup/hooks';
+import { useDataContext } from 'popup/hooks/useDataContext';
+import useColors from 'popup/hooks/useColors';
 
 const ColorsPage = () => {
   const { colors } = useDataContext();
+  const { isLightColor, colorSort, rgbToHex } = useColors();
 
   const onCopyClick = (color: string) => {
     alert(color);
@@ -14,15 +16,16 @@ const ColorsPage = () => {
 
   return (
     <Style.Wrap>
-      {colors.sort().map((color, idx) => {
-        const isLight = false;
+      {colorSort(colors).map((color, idx) => {
+        const isLight = isLightColor(color);
+        const labelColor = rgbToHex(color);
         return (
           <Style.ColorItem key={color + `-color-list-` + idx} $color={color}>
             <Style.ColorInfo $isLight={isLight}>{color}</Style.ColorInfo>
             <Btn.RoundIconBtn
               $isLight={isLight}
               className="fill"
-              onClick={() => onCopyClick(color)}
+              onClick={() => onCopyClick(labelColor.hex)}
             >
               <IconColorize />
             </Btn.RoundIconBtn>

@@ -3,7 +3,7 @@ import { styled } from 'styled-components';
 
 import IconCopy from 'assets/icon-content_copy.svg';
 import Btn from 'popup/components/Button';
-import { useDataContext } from 'popup/hooks';
+import { useDataContext } from 'popup/hooks/useDataContext';
 
 const ColorsPage = () => {
   const { pageTitle, headingsFonts, bodyFonts, bodyStyle, assets } =

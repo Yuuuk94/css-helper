@@ -22,5 +22,7 @@ export const getColors = (computedStyle: CSSStyleDeclaration) => {
 const validColors = (color: string) => {
   if (color?.includes('url') || color === 'none') return [];
   const colorList = color.split('rgb');
-  return colorList.map((color) => color && 'rgb' + color.trim());
+  return colorList.map((color) => {
+    if (!!color) return 'rgb' + color.trim();
+  });
 };

@@ -8,9 +8,9 @@ const Btn = {
     cursor: pointer;
   `,
   RoundIconBtn: styled.button<{ $isLight?: boolean; $isSmall?: boolean }>`
-    width: ${({ $isSmall }) => ($isSmall ? '16px' : '24px')} !important;
-    min-width: ${({ $isSmall }) => ($isSmall ? '16px' : '24px')} !important;
-    height: ${({ $isSmall }) => ($isSmall ? '16px' : '24px')} !important;
+    width: ${({ $isSmall }) => ($isSmall ? '18px' : '24px')} !important;
+    min-width: ${({ $isSmall }) => ($isSmall ? '18px' : '24px')} !important;
+    height: ${({ $isSmall }) => ($isSmall ? '18px' : '24px')} !important;
     border-radius: 100%;
 
     display: flex;
