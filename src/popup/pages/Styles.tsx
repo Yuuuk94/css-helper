@@ -23,12 +23,12 @@ const ColorsPage = () => {
 
   const sectionList = [
     {
-      title: 'Headings Fonts',
+      title: 'Headings Font',
       content: headingsFonts.join(', '),
       type: 'text',
     },
     {
-      title: 'Body Fonts',
+      title: 'Body Font',
       content: bodyFonts.join(', '),
       type: 'text',
     },
