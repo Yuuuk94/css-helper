@@ -13,7 +13,12 @@ function isLightColor(color: string) {
 }
 
 function colorSort(colorList: string[]) {
-  return colorList.sort((a, b) => getHsp(a).hsp - getHsp(b).hsp);
+  return colorList.sort((a, b) => {
+    const gapHsp = getHsp(a).hsp - getHsp(b).hsp;
+    if (gapHsp === 0) return (getHsp(b).a || 1) - (getHsp(a).a || 1);
+
+    return gapHsp;
+  });
 }
 
 const getHsp = (color: string) => {

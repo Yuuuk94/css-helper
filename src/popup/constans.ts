@@ -24,10 +24,10 @@ export const AppMenuList = [
     label: 'assets',
     path: ROUTE_PATH.ASSETS,
   },
-  {
-    label: 'settings',
-    path: ROUTE_PATH.SETTINGS,
-  },
+  // {
+  //   label: 'settings',
+  //   path: ROUTE_PATH.SETTINGS,
+  // },
   //   {
   //     label: 'wireframe',
   //     path: ROUTE_PATH.WIREFRAME,

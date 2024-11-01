@@ -11,19 +11,23 @@ export const sendMessageToIframe = <T = any>(data: MessageProps<T>) => {
 
 export const getMessageFromIframe = async (e: MessageEvent<string>) => {
   console.log('parent', e);
-  const messageData: MessageProps = JSON.parse(e.data);
-  switch (messageData.id) {
-    case IFRAME_MESSAGE.CLOSE_APP:
-      closeApp();
-      break;
-    case IFRAME_MESSAGE.SEND_CLIPBOARD:
-      copyToClipboard(messageData.contents);
-      break;
-    case IFRAME_MESSAGE.DOWNLOAD_ASSET:
-      await imgDownload(messageData.contents);
-      break;
-    default:
-      return;
+  try {
+    const messageData: MessageProps = JSON.parse(e.data);
+    switch (messageData.id) {
+      case IFRAME_MESSAGE.CLOSE_APP:
+        closeApp();
+        break;
+      case IFRAME_MESSAGE.SEND_CLIPBOARD:
+        copyToClipboard(messageData.contents);
+        break;
+      case IFRAME_MESSAGE.DOWNLOAD_ASSET:
+        await imgDownload(messageData.contents);
+        break;
+      default:
+        return;
+    }
+  } catch (e) {
+    return;
   }
 };
 

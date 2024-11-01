@@ -86,7 +86,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: "Roboto", -apple-system, 'Apple SD Gothic', 'Apple Color Emoji', sans-serif !important;
+        font-family: "Roboto", -apple-system, sans-serif !important;
         font-size: 14px;
     }
 

@@ -86,7 +86,7 @@ const Style = {
       top: 0;
       left: calc(12px - 1px);
       bottom: 0;
-      z-index: 100;
+      z-index: 200;
       border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
     &::after {
@@ -97,7 +97,7 @@ const Style = {
       top: 0;
       right: calc(12px - 1px);
       bottom: 0;
-      z-index: 100;
+      z-index: 200;
       border: 1px solid ${({ theme }) => theme.colors.text[700]};
     }
   `,
@@ -113,6 +113,7 @@ const Style = {
     top: 0;
     left: 0;
     right: 0;
+    z-index: 100;
     background-color: white;
 
     -webkit-user-select: none;
@@ -144,7 +145,7 @@ const Style = {
     }
   `,
   AppTitle: styled.h1`
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     text-transform: uppercase;
     color: ${({ theme }) => theme.colors.text[900]};
@@ -162,6 +163,7 @@ const Style = {
     top: 48px;
     left: 0;
     right: 0;
+    z-index: 100;
     background-color: white;
 
     &::after {
@@ -177,8 +179,8 @@ const Style = {
     }
   `,
   MenuItem: styled.li`
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     text-transform: capitalize;
     color: ${({ theme }) => theme.colors.text[900]};
     cursor: pointer;
@@ -190,7 +192,7 @@ const Style = {
   ContentsContainer: styled.div<{ $isDetail: boolean }>`
     width: 100%;
     height: 100%;
-    padding: ${({ $isDetail }) => ($isDetail ? '48px' : '75px')} 12px 8px;
+    padding: ${({ $isDetail }) => ($isDetail ? '48px' : '72px')} 12px 8px;
     overflow: auto;
     &::after {
       content: '';
