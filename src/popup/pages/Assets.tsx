@@ -46,9 +46,9 @@ const Style = {
     &::before {
       content: '';
       width: 1px;
-      height: calc(100% - 75px - 8px);
+      height: calc(100% - 72px - 8px);
       position: absolute;
-      top: 75px;
+      top: 72px;
       bottom: 8px;
       left: 50%;
       transform: translateX(-50%);
