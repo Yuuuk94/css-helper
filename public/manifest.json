@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
 
-  "short_name": "css recipe",
-  "name": "Css Recipe for Design and Frontend",
-  "description": "Css Recipe for Design and Frontend",
+  "short_name": "CSS RECIPE",
+  "name": "CSS RECIPE",
+  "description": "CSS RECIPE for Design and Development",
   "version": "1.0.0",
 
-  "permissions": ["storage", "scripting", "activeTab", "downloads"],
+  "permissions": ["scripting", "activeTab", "downloads"],
 
   "host_permissions": ["<all_urls>"],
 
