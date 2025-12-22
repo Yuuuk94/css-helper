@@ -13,7 +13,7 @@ const useStyles = (style: CSSStyleDeclaration) => {
         if (styleKeysIndex > -1) {
           const newValue = style[value as any];
           acc[styleKeys[styleKeysIndex]] = value.includes('color')
-            ? rgbToHex(newValue).hex
+            ? rgbToHex(newValue)?.hex
             : newValue;
         }
         return acc;

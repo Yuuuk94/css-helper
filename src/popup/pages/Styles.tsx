@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { styled } from 'styled-components';
 
 import IconCopy from 'assets/icon-content_copy.svg';
@@ -7,9 +7,9 @@ import { useDataContext } from 'popup/hooks/useDataContext';
 import useMessage from 'popup/hooks/useMessage';
 import { IFRAME_MESSAGE } from 'popup/constans';
 import useStyles from 'popup/hooks/useStyles';
-import useColors from 'popup/hooks/useColors';
 
 type contentType = 'text' | 'typeface';
+
 const ColorsPage = () => {
   const { pageTitle, headingsFonts, bodyFonts, bodyStyle, assets } =
     useDataContext();
@@ -17,10 +17,8 @@ const ColorsPage = () => {
   const {
     typeFace: bodyTypeFace,
     typeFaceKey: bodyTypeFaceKey,
-    styles,
     copyStyleToClipboard,
   } = useStyles(bodyStyle);
-  const { rgbToHex } = useColors();
 
   const { sendMessageToApp } = useMessage();
 
@@ -86,7 +84,7 @@ const ColorsPage = () => {
                   {section.type === 'text' && (section.content as string)}
                   {section.type === 'typeface' &&
                     bodyTypeFaceKey.map((key) => (
-                      <Style.StyleWrap>
+                      <Style.StyleWrap key={key}>
                         <Style.StyleItem>{key}</Style.StyleItem>
                         <Style.StyleItem>
                           {(section.content as Record<string, string>)[key]}

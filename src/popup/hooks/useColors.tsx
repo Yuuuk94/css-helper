@@ -13,21 +13,25 @@ function isLightColor(color: string) {
 }
 
 function colorSort(colorList: string[]) {
-  return colorList.sort((a, b) => {
-    const gapHsp = getHsp(a).hsp - getHsp(b).hsp;
-    if (gapHsp === 0) return (getHsp(b).a || 1) - (getHsp(a).a || 1);
+  return colorList
+    .filter((c) => c.startsWith('rgb(') || c.startsWith('rgba('))
+    .sort((a, b) => {
+      const gapHsp = getHsp(a).hsp - getHsp(b).hsp;
+      if (gapHsp === 0) return (getHsp(b).a || 1) - (getHsp(a).a || 1);
 
-    return gapHsp;
-  });
+      return gapHsp;
+    });
 }
 
 const getHsp = (color: string) => {
+  if (!color.startsWith('rgb(') && !color.startsWith('rgba('))
+    color = 'rgb(0,0,0)';
   let r, g, b, a, hsp;
+
   let newColor: any = color;
   newColor = newColor?.match(
     /^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/
   );
-
   r = newColor[1];
   g = newColor[2];
   b = newColor[3];
