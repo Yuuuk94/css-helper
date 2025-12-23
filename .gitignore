@@ -129,6 +129,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-dist.pem
-dist.crx
-dist.zip
+./dist.pem
+./dist.crx
+./dist.zip
